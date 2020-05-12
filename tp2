@@ -1,0 +1,152 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+#include "dataWareHouse.h"
+
+#define TAM 5
+#define HARDCODEO 5
+
+typedef struct
+{
+    int id;
+    char name[51];
+    char lastName[51];
+    float salary;
+    int sector;
+    int isEmpty;
+}Employee;
+
+int initEmployees(Employee* list, int len); //Inicializar Empleados.
+int addEmployee(Employee* list, int id, char name[], char lastName[], float salary, int sector, int len); //Alta Empleados.
+int findEmployeeById (Employee* list, int id, int len); //Buscar Empleados.
+int removeEmployee (Employee* list, int id, int len); //Borrar Empleados.
+int sortEmployees (Employee* list, int order, int len); //Ordenar Empleados.
+int printEmployees (Employee* list, int len); // Mostrar Empleados.
+
+void hardcodearEmpleado (Employee vec[], int cantidad);
+void mostrarSectores();
+int buscarIndice(Employee* list, int len);
+
+int main()
+{
+    Employee list[TAM];
+    Employee aux;
+    int options;
+    int proximoId=0;
+    int indice;
+    float hola;
+
+    //hardcodearEmpleado(list,HARDCODEO);
+
+
+
+    printf("*****Menu Empleados*****\n\n");
+
+    do
+    {
+        printf("1)AlTAS\n");
+        printf("2)MODIFICAR\n");
+        printf("3)BAJA\n");
+        printf("4)INFORMAR\n");
+        printf("5)SALIR\n\n");
+        printf("Elija una opcion: ");
+        scanf("%d",&options);
+
+        switch(options)
+        {
+        case 1:
+            system("cls");
+
+            indice=buscarIndice(list,TAM);
+            proximoId++;
+
+            utn_getCadena(aux.name,51,2,"Ingrese nombre: ","Error, vuelva a intentarlo: ");
+            utn_getCadena(aux.lastName,51,20,"Ingrese apellido: ","Error, vuelva a intentarlo: ");
+            utn_getFlotante(&aux.salary,20,"Ingrese salario: ","Error, vuelva a intentarlo: ",1,50000);
+            utn_getEntero(&aux.sector,20,"Ingrese sector: ","Error, vuelva a intentarlo: ",1,5);
+
+            list[indice]=aux;
+
+            addEmployee(list,proximoId,list[indice].name,list[indice].lastName,list[indice].salary,list[indice].sector, TAM);
+
+            system("pause");
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+        default:
+            printf("\nOpcion invalida, vuelva a intentarlo\n");
+        }
+
+    }while(options!=5);
+    return 0;
+}
+
+void hardcodearEmpleado (Employee vec[], int cantidad)
+{
+    for(int i=0; i<cantidad; i++)
+    {
+        vec[i].id=ids[i];
+        strcpy(vec[i].name,nombres[i]);
+        strcpy(vec[i].lastName,apellidos[i]);
+       // vec[i].salary= sueldos[i];
+        vec[i].sector= idsSector[i];
+        vec[i].isEmpty= 1;
+    }
+}
+
+int findEmployeeById (Employee* list, int id, int len)
+{
+    int indice=-1;
+
+    for(int i=0; i<len; i++)
+    {
+        if(list[i].id==id)
+        {
+            indice=i;
+        }
+    }
+
+    return indice;
+}
+
+int buscarIndice(Employee* list, int len)
+{
+    int indice;
+    int indiceLibre;
+
+    for(int i=0; i<len; i++)
+    {
+        indiceLibre=findEmployeeById(list,i,len);
+
+        if(indiceLibre==-1)
+        {
+            indice=i;
+            break;
+        }
+    }
+
+    return indice;
+}
+
+int initEmployees(Employee* list,int len)
+{
+    for(int i=0; i<len; i++)
+    {
+        list[i].isEmpty=1;
+    }
+}
+
+int addEmployee(Employee* list, int id, char name[], char lastName[], float salary, int sector, int len)
+{
+
+}
